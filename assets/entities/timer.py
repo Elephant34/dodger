@@ -14,7 +14,7 @@ class Timer(pyglet.text.Label):
         '''
         super().__init__(**kwargs)
 
-        self.num = 0.00
+        self.num = 0.01
         self.text = str(self.num)
 
         self.font_family = "arial"

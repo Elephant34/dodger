@@ -1,6 +1,8 @@
 '''
 A game- player dodge the falling blocks
 '''
+import random
+import math
 import pyglet
 from pyglet.window import key
 from assets.entities import player, timer
@@ -26,6 +28,17 @@ class Window(pyglet.window.Window):
         main_batch.draw()
 
 def update(dt):
+    '''
+    Updates all the entities so they can move
+    '''
+    # Based off decay function- probability increases over time
+    chance = random.randint(
+        1,
+        round(70 * (math.e/2)**((-1/20)*float(timer.text))+2)
+    )
+    if chance == 1:
+        # Will spawn an enemy block
+        pass
     for enitity in enitity_list:
         enitity.update(dt)
 
@@ -42,8 +55,10 @@ enitity_list = []
 player = player.Player(pressed, batch=main_batch)
 enitity_list.append(player)
 
-text = timer.Timer(batch=main_batch)
-enitity_list.append(text)
+timer = timer.Timer(batch=main_batch)
+enitity_list.append(timer)
+
+enemy_list = []
 
 if __name__ == "__main__":
     pyglet.clock.schedule_interval(update, 1/120.0)
