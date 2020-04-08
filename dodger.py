@@ -22,7 +22,7 @@ class Window(pyglet.window.Window):
 
         # Draws all the other needed items
 
-window = Window(600, 800)
+window = Window(600, 600)
 window.set_caption("Dodger")
 
 if __name__ == "__main__":
